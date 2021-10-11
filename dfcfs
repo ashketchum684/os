@@ -1,37 +1,63 @@
+#include<conio.h>
+
 #include<stdio.h>
+
 int main()
+
 {
-	int proc[20],bt[10],wt[10],tat[10],tot_tat,tot_wt,i,j,lim;
-	printf("\nEnter no. of proccesses: ");
-	scanf("%d", &lim);
-	for(i=0;i<lim;i++)
-	{
-		printf("\nEnter proccess[%d]: ",i+1);
-		scanf("%d", &proc[i]);
-	}
-	int n=sizeof proc /sizeof proc[0];
-	wt[0]=0;
-	
-	for(i=0;i<n;i++)
-		wt[i]=bt[i-1]+wt[i-1];
-	
-	for (int i = 0; i < n ; i++)
-		tat[i] = bt[i] + wt[i];
-	printf("Processes Burst time Waiting time Turn around time\n");
-	
-	for (int i=0; i<n; i++)
-	{
-		total_wt = tot_wt + wt[i];
-		total_tat = tot_tat + tat[i];
-		printf(" %d ",(i+1));
-		printf("	 %d ", bt[i] );
-		printf("	 %d",wt[i] );
-		printf("	 %d\n",tat[i] );
-	}
-	int s=(float)total_wt / (float)n;
-	int t=(float)total_tat / (float)n;
-	printf("Average waiting time = %d",s);
-	printf("\n");
-	printf("Average turn around time = %d ",t);	
-	return 0;
+
+int i,j,sum=0,n;
+
+int ar[20],tm[20];
+
+int disk
+
+clrscr();
+
+printf("enter number of location\t");
+
+scanf("%d",&n);
+
+printf("enter position of head\t");
+
+scanf("%d",&disk);
+
+printf("enter elements of disk queue\n");
+
+for(i=0;i<n;i++)
+
+{
+
+scanf("%d",&ar[i]);
+
+tm[i]=disk-ar[i];
+
+if(tm[i]<0)
+
+{
+
+tm[i]=ar[i]-disk;
+
+}
+
+disk=ar[i];
+
+sum=sum+tm[i];
+
+}
+
+/*for(i=0;i<n;i++)
+
+{
+
+printf("\n%d",tm[i]);
+
+} */
+
+printf("\nmovement of total cylinders %d",sum);
+
+getch();
+
+return 0;
+
 }
